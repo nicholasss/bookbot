@@ -1,13 +1,11 @@
 def main():
 	book_path = "books/frankenstein.txt"
 	book_text = get_book_text(book_path)
-	print(book_text)
 
 	frankenstein_words = word_count(book_text)
-	print(f"There are {frankenstein_words} words in frankenstein.")
-
 	frankenstein_letters = letter_count(book_text)
-	print(frankenstein_letters)
+	print_report(book_path, frankenstein_words, frankenstein_letters)
+
 
 # Getting Text
 def get_book_text(path):
@@ -32,17 +30,26 @@ def letter_count(text):
 	
 	for word in words:
 		for letter in word:
-			if letter not in count:
+			if letter not in count and letter.isalpha() :
 				count[letter] = 1
-			else:
+			elif letter.isalpha() :
 				count[letter] += 1
+			else:
+				pass
 	return count
 
 
-def print_report(word_count, letter_count):
+def print_report(path, word_count, letter_count):
 	# words -> int
 	# letters -> {letter: int}
-	pass
+	
+	print(f"--- Begin report of {path} ---")
+	print(f"{word_count} words were found in the document.\n")
 
+	letters = letter_count.keys()
+	for letter in letters:
+		print(f"The '{letter}' was found {letter_count[letter]} times.")
+
+	print("--- End report ---")
 
 main()
