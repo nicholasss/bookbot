@@ -19,7 +19,7 @@ def get_book_text(path):
 def word_count(text):
 	count = 0
 	words = text.split()
-	
+
 	for word in words:
 		count += 1
 	return count
@@ -37,6 +37,12 @@ def letter_count(text):
 			else:
 				count[letter] += 1
 	return count
+
+
+def print_report(word_count, letter_count):
+	# words -> int
+	# letters -> {letter: int}
+	pass
 
 
 main()
